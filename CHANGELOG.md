@@ -7,7 +7,7 @@ dan proyek ini mematuhi [Semantic Versioning](https://semver.org/lang/id/).
 
 ## [Unreleased]
 
-## [1.0.1] - 2026-09-14
+## [1.0.0] - 2026-09-14
 
 ### Diperbaiki
 - Mengatasi isu aksesibilitas Lighthouse / axe-core `[aria-hidden="true"] elements contain focusable descendents` pada modal widget:
@@ -17,14 +17,6 @@ dan proyek ini mematuhi [Semantic Versioning](https://semver.org/lang/id/).
 - Memperbaiki penanganan filter kontras Invert agar elemen fixed tidak terdampak.
 - Memperbaiki kontras tinggi ikon SVG agar tidak menghilang saat mode kontras diaktifkan.
 - Memperbaiki penamaan properti bahasa internal (`this.currentLang`) untuk mencegah eror inisialisasi DOM.
-
-### Ditambahkan
-- Panduan pemasangan cepat widget melalui jsDelivr CDN pada `README.md`.
-
-### Diubah
-- Menyederhanakan dokumentasi `README.md` agar lebih padat (*to the point*) dan fokus pada langkah penggunaan serta konfigurasi penting.
-
-## [1.0.0] - 2026-09-14
 
 ### Ditambahkan
 - Inisialisasi arsitektur widget aksesibilitas mandiri berbasis Web Component (`<a11y-widget>`).
