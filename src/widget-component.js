@@ -9,7 +9,7 @@ export class AccessibilityWidgetElement extends HTMLElement {
     this.isOpen = false;
     this.stateManager = null;
     this.domEffects = null;
-    this.lang = 'id';
+    this.currentLang = 'id';
     this.position = 'bottom-right';
     this.primaryColor = '#0056b3';
   }
@@ -19,7 +19,7 @@ export class AccessibilityWidgetElement extends HTMLElement {
     this.domEffects = domEffects;
     this.position = options.position || this.getAttribute('data-position') || 'bottom-right';
     this.primaryColor = options.primaryColor || this.getAttribute('data-color') || '#0056b3';
-    this.lang = detectLanguage(options.lang || this.getAttribute('data-lang'));
+    this.currentLang = detectLanguage(options.lang || this.getAttribute('data-lang'));
 
     this.render();
     this.bindEvents();
@@ -32,7 +32,7 @@ export class AccessibilityWidgetElement extends HTMLElement {
   }
 
   get t() {
-    return translations[this.lang] || translations.id;
+    return translations[this.currentLang] || translations.id;
   }
 
   render() {
@@ -77,7 +77,7 @@ export class AccessibilityWidgetElement extends HTMLElement {
           </div>
           <div class="a11y-header-actions">
             <button type="button" class="a11y-lang-btn" id="lang-btn" aria-label="Toggle language">
-              ${this.lang.toUpperCase()}
+              ${this.currentLang.toUpperCase()}
             </button>
             <button type="button" class="a11y-close-btn" id="close-btn" aria-label="${this.t.close}">
               ${ICONS.close}
@@ -161,7 +161,7 @@ export class AccessibilityWidgetElement extends HTMLElement {
 
     // Language Toggle
     langBtn.addEventListener('click', () => {
-      this.lang = this.lang === 'id' ? 'en' : 'id';
+      this.currentLang = this.currentLang === 'id' ? 'en' : 'id';
       this.render();
       this.bindEvents();
       this.updateUI(this.stateManager.state);
