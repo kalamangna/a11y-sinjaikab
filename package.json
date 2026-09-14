@@ -1,5 +1,5 @@
 {
-  "name": "a11y-widget",
+  "name": "a11y-sinjaikab",
   "version": "1.0.0",
   "description": "Reusable standalone web accessibility widget (like UserWay) with Shadow DOM encapsulation",
   "type": "module",

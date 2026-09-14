@@ -91,7 +91,7 @@ Pastikan Anda telah menginstal [Node.js](https://nodejs.org/) (versi 18+ direkom
 
 ```bash
 # 1. Masuk ke direktori repositori
-cd a11y-widget
+cd a11y-sinjaikab
 
 # 2. Instalasi dependensi pengembangan
 npm install
@@ -108,7 +108,7 @@ npm run build
 ## 📂 Struktur Repositori
 
 ```text
-a11y-widget/
+a11y-sinjaikab/
 ├── dist/
 │   ├── widget.min.js         # Berkas produksi mandiri (IIFE format, ~7.4 KB gzipped)
 │   └── demo.html             # Contoh implementasi mandiri dengan file produksi
