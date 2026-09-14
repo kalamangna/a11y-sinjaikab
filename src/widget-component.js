@@ -69,6 +69,7 @@ export class AccessibilityWidgetElement extends HTMLElement {
         aria-modal="true" 
         aria-label="${this.t.widgetTitle}"
         aria-hidden="true"
+        inert
       >
         <header class="a11y-header">
           <div class="a11y-title-group">
@@ -217,12 +218,38 @@ export class AccessibilityWidgetElement extends HTMLElement {
       this.stateManager.set('pauseAnimations', !this.stateManager.get('pauseAnimations'));
     });
 
-    // ESC to close
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && this.isOpen) {
-        this.closeModal();
-      }
-    });
+    // ESC to close and Tab focus trap
+    if (!this._keydownBound) {
+      window.addEventListener('keydown', (e) => {
+        if (!this.isOpen) return;
+
+        if (e.key === 'Escape') {
+          this.closeModal();
+          return;
+        }
+
+        if (e.key === 'Tab') {
+          const shadow = this.shadowRoot;
+          const modal = shadow?.getElementById('modal');
+          if (!modal) return;
+
+          const focusable = Array.from(modal.querySelectorAll('button:not([disabled])'));
+          if (focusable.length === 0) return;
+
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+
+          if (e.shiftKey && shadow.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && shadow.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      });
+      this._keydownBound = true;
+    }
   }
 
   toggleModal() {
@@ -236,10 +263,12 @@ export class AccessibilityWidgetElement extends HTMLElement {
   openModal() {
     this.isOpen = true;
     const shadow = this.shadowRoot;
-    shadow.getElementById('modal').classList.add('open');
+    const modal = shadow.getElementById('modal');
+    modal.classList.add('open');
+    modal.removeAttribute('inert');
+    modal.setAttribute('aria-hidden', 'false');
     shadow.getElementById('backdrop').classList.add('open');
     shadow.getElementById('trigger-btn').setAttribute('aria-expanded', 'true');
-    shadow.getElementById('modal').setAttribute('aria-hidden', 'false');
     // Focus first actionable element inside modal
     setTimeout(() => {
       const firstBtn = shadow.getElementById('btn-text-size');
@@ -250,10 +279,12 @@ export class AccessibilityWidgetElement extends HTMLElement {
   closeModal() {
     this.isOpen = false;
     const shadow = this.shadowRoot;
-    shadow.getElementById('modal').classList.remove('open');
+    const modal = shadow.getElementById('modal');
+    modal.classList.remove('open');
+    modal.setAttribute('inert', '');
+    modal.setAttribute('aria-hidden', 'true');
     shadow.getElementById('backdrop').classList.remove('open');
     shadow.getElementById('trigger-btn').setAttribute('aria-expanded', 'false');
-    shadow.getElementById('modal').setAttribute('aria-hidden', 'true');
     shadow.getElementById('trigger-btn').focus();
   }
 

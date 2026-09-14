@@ -83,12 +83,14 @@
   backdrop-filter: blur(2px);
   z-index: 999998;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
 .a11y-backdrop.open {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 
@@ -105,15 +107,17 @@
   flex-direction: column;
   z-index: 999999;
   opacity: 0;
+  visibility: hidden;
   transform: translateY(16px) scale(0.96);
   pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease;
   overflow: hidden;
   border: 1px solid #e5e7eb;
 }
 
 .a11y-modal.open {
   opacity: 1;
+  visibility: visible;
   transform: translateY(0) scale(1);
   pointer-events: auto;
 }
