@@ -146,6 +146,12 @@
   color: var(--a11y-primary, #0056b3);
 }
 
+.a11y-header-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .a11y-title {
   font-size: 16px;
   font-weight: 700;
@@ -188,6 +194,12 @@
   align-items: center;
   justify-content: center;
   transition: color 0.15s, background 0.15s;
+}
+
+.a11y-close-btn svg {
+  width: 18px;
+  height: 18px;
+  display: block;
 }
 
 .a11y-close-btn:hover {
@@ -245,6 +257,12 @@
   margin-bottom: 8px;
   color: #475569;
   transition: color 0.15s ease;
+}
+
+.a11y-card-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .a11y-card-btn.active .a11y-card-icon {

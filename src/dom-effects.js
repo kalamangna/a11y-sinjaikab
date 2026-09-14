@@ -73,14 +73,23 @@ html.a11y-contrast-dark body {
   background-color: #121212 !important;
   color: #ffff00 !important;
 }
-html.a11y-contrast-dark *:not(a11y-widget):not(a11y-widget *):not(img):not(video):not(svg) {
+html.a11y-contrast-dark *:not(a11y-widget):not(a11y-widget *):not(img):not(video):not(svg):not(svg *) {
   background-color: #121212 !important;
   color: #ffffff !important;
   border-color: #555555 !important;
   box-shadow: none !important;
 }
-html.a11y-contrast-dark a:not(a11y-widget *) {
+html.a11y-contrast-dark a:not(a11y-widget *),
+html.a11y-contrast-dark a:not(a11y-widget *) * {
   color: #ffff00 !important;
+}
+html.a11y-contrast-dark svg:not(a11y-widget *) {
+  color: #ffff00 !important;
+  fill: currentColor !important;
+}
+html.a11y-contrast-dark svg:not(a11y-widget *) * {
+  fill: currentColor !important;
+  background-color: transparent !important;
 }
 
 /* Light Contrast */
@@ -92,14 +101,23 @@ html.a11y-contrast-light body {
   background-color: #ffffff !important;
   color: #000000 !important;
 }
-html.a11y-contrast-light *:not(a11y-widget):not(a11y-widget *):not(img):not(video):not(svg) {
+html.a11y-contrast-light *:not(a11y-widget):not(a11y-widget *):not(img):not(video):not(svg):not(svg *) {
   background-color: #ffffff !important;
   color: #000000 !important;
   border-color: #000000 !important;
 }
-html.a11y-contrast-light a:not(a11y-widget *) {
+html.a11y-contrast-light a:not(a11y-widget *),
+html.a11y-contrast-light a:not(a11y-widget *) * {
   color: #0000ee !important;
   font-weight: bold !important;
+}
+html.a11y-contrast-light svg:not(a11y-widget *) {
+  color: #000000 !important;
+  fill: currentColor !important;
+}
+html.a11y-contrast-light svg:not(a11y-widget *) * {
+  fill: currentColor !important;
+  background-color: transparent !important;
 }
 
 /* 5. Highlight Links */
