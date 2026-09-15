@@ -46,6 +46,18 @@ html.a11y-spacing-2 *:not(a11y-widget):not(a11y-widget *) {
   line-height: 2.1 !important;
 }
 
+/* Container Isolation */
+a11y-widget {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  pointer-events: none !important;
+  z-index: 999999 !important;
+  display: block !important;
+}
+
 /* 4. Contrast Modes */
 /* Invert */
 html.a11y-contrast-invert {
@@ -54,12 +66,13 @@ html.a11y-contrast-invert {
 }
 html.a11y-contrast-invert img,
 html.a11y-contrast-invert video,
-html.a11y-contrast-invert canvas {
+html.a11y-contrast-invert canvas,
+html.a11y-contrast-invert a11y-widget {
   filter: invert(100%) hue-rotate(180deg) !important;
 }
 
 /* Monochrome */
-html.a11y-contrast-monochrome {
+html.a11y-contrast-monochrome body > *:not(a11y-widget) {
   filter: grayscale(100%) !important;
 }
 

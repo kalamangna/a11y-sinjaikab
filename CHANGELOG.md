@@ -16,8 +16,10 @@ dan proyek ini mematuhi [Semantic Versioning](https://semver.org/lang/id/).
 - Penyesuaian tautan resmi Sinjai pada halaman demo showcase `index.html`.
 
 ### Diperbaiki
-- Memperbaiki bug tombol pemicu widget dan modal yang hilang dari layar saat mode kontras *Invert* (klik kontras 3x) diaktifkan: menghapus penetapan filter CSS langsung pada elemen kustom `<a11y-widget>` yang sebelumnya memicu pembentukan *containing block* baru dan memutus koordinat posisi `fixed` terhadap *viewport* peramban.
-- Mengembalikan penerapan filter mode monokrom langsung ke elemen `html` agar elemen melayang/tetap (*fixed/sticky*) pada situs induk tidak mengalami dislokasi.
+- Mengisolasi warna widget secara konsisten agar tidak ikut terdistorsi pada seluruh mode kontras (*Dark*, *Light*, *Invert*, dan *Monochrome*):
+  - Mengonfigurasi kontainer `<a11y-widget>` berposisi `fixed` layar penuh (*100vw × 100vh*) dengan `pointer-events: none` sehingga menjadi *containing block* yang presisi 1:1 terhadap *viewport* peramban.
+  - Memastikan tombol pemicu widget dan modal popup tidak berpindah ataupun menghilang ke luar layar saat *counter-filter* balik diterapkan pada mode *Invert*.
+  - Mengisolasi mode *Monochrome* menggunakan selektor `body > *:not(a11y-widget)` sehingga website induk menjadi monokrom sementara tombol widget tetap mempertahankan warna identitas aslinya.
 
 ### Diubah
 - Melakukan normalisasi nama domain dengan menghapus prefiks `www.` secara otomatis agar statistik kunjungan domain (misalnya `www.panaikang.desa.id` dan `panaikang.desa.id`) teragregasi menjadi satu.
