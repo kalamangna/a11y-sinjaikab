@@ -16,6 +16,7 @@ dan proyek ini mematuhi [Semantic Versioning](https://semver.org/lang/id/).
 - Penyesuaian tautan resmi Sinjai pada halaman demo showcase `index.html`.
 
 ### Diubah
+- Mengisolasi tampilan panel dan tombol pemicu widget dari distorsi warna pada seluruh mode kontras (menambahkan *counter-filter* balik pada mode *Invert* dan pengecualian selektor pada mode *Monokrom*) agar UI kontrol tetap stabil, jelas, dan memenuhi standar WCAG sama seperti UserWay.
 - Melakukan normalisasi nama domain dengan menghapus prefiks `www.` secara otomatis agar statistik kunjungan domain (misalnya `www.panaikang.desa.id` dan `panaikang.desa.id`) teragregasi menjadi satu.
 - Mengecualikan pengiriman telemetri saat mengakses halaman dashboard admin (`/admin/a11y-stats`) maupun domain pratinjau Vercel (`*.vercel.app`) dan lingkungan lokal (`localhost`) agar pengujian internal tidak mengotori analitik tayangan publik.
 - Memprioritaskan `fetch` dengan `keepalive: true` sebagai mekanisme transmisi utama telemetri guna menghindari pemblokiran *beacon queue* pada peramban pihak ketiga (*cross-origin*).

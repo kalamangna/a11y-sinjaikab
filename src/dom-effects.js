@@ -54,12 +54,13 @@ html.a11y-contrast-invert {
 }
 html.a11y-contrast-invert img,
 html.a11y-contrast-invert video,
-html.a11y-contrast-invert canvas {
+html.a11y-contrast-invert canvas,
+html.a11y-contrast-invert a11y-widget {
   filter: invert(100%) hue-rotate(180deg) !important;
 }
 
 /* Monochrome */
-html.a11y-contrast-monochrome {
+html.a11y-contrast-monochrome body > *:not(a11y-widget) {
   filter: grayscale(100%) !important;
 }
 
