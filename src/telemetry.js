@@ -11,7 +11,8 @@ export class TelemetryManager {
     if (!this.enabled || typeof window === 'undefined' || !this.endpoint) return;
 
     // Filter out internal local testing, vercel preview, or admin stats page
-    const hostname = (window.location.hostname || '').toLowerCase();
+    const rawHost = (window.location.hostname || '').toLowerCase();
+    const hostname = rawHost.replace(/^www\./i, '');
     const pathname = (window.location.pathname || '/').toLowerCase();
     if (
       !hostname ||
