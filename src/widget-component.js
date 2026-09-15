@@ -79,6 +79,7 @@ export class AccessibilityWidgetElement extends HTMLElement {
         aria-hidden="true"
         inert
       >
+        <div class="a11y-drag-handle" aria-hidden="true"></div>
         <header class="a11y-header">
           <div class="a11y-title-group">
             <span class="a11y-header-icon">${ICONS.logo}</span>

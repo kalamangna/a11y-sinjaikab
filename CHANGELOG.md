@@ -8,6 +8,11 @@ dan proyek ini mematuhi [Semantic Versioning](https://semver.org/lang/id/).
 ## [Unreleased]
 
 ### Ditambahkan
+- **Responsivitas Perangkat Seluler & Tablet**:
+  - Transformasi modal menjadi **Bottom Sheet Modern** pada smartphone (`<= 640px`) yang menempel di bagian bawah layar (`bottom: 0`, `max-height: 85vh`) dilengkapi animasi geser vertikal naik yang halus (*slide-up transition*).
+  - Penambahan elemen indikator visual *drag handle bar* pada bagian atas modal saat dibuka di ponsel pintar.
+  - Penyesuaian ukuran tombol pemicu menjadi `48px × 48px` dengan jarak tepi `14px` di smartphone (memenuhi standar ukuran sentuh *WCAG Touch Target* minimum tanpa menutupi konten layar).
+  - Optimalisasi tata letak tablet (`641px - 1024px`) dengan mempertahankan format *Floating Card* pojok elegan berdimensi `380px` yang ramah sentuhan (*touch-friendly*).
 - Lambang resmi Kabupaten Sinjai (`sinjai.webp`) pada elemen tautan footer modal widget berdampingan dengan teks `sinjaikab.go.id`.
 - Dukungan atribut kustom `data-logo` untuk fleksibilitas penyesuaian aset logo.
 - Identitas resmi Kabupaten Sinjai dan tautan website `sinjaikab.go.id` pada bagian footer modal widget dengan indikator ikon tautan eksternal.
