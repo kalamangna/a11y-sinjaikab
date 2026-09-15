@@ -142,7 +142,18 @@ export class AccessibilityWidgetElement extends HTMLElement {
             ${ICONS.reset}
             <span>${this.t.reset}</span>
           </button>
-          <span class="a11y-credit">A11y Helper</span>
+          <a 
+            href="https://sinjaikab.go.id" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="a11y-credit" 
+            id="credit-link"
+            title="${this.t.sinjaikabWebTitle}"
+            aria-label="${this.t.sinjaikabWebTitle}"
+          >
+            <span>${this.t.sinjaikabWeb}</span>
+            ${ICONS.externalLink}
+          </a>
         </footer>
       </div>
     `;
@@ -233,7 +244,7 @@ export class AccessibilityWidgetElement extends HTMLElement {
           const modal = shadow?.getElementById('modal');
           if (!modal) return;
 
-          const focusable = Array.from(modal.querySelectorAll('button:not([disabled])'));
+          const focusable = Array.from(modal.querySelectorAll('button:not([disabled]), a[href]:not([tabindex="-1"])'));
           if (focusable.length === 0) return;
 
           const first = focusable[0];

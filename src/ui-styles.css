@@ -340,9 +340,39 @@
 }
 
 .a11y-credit {
-  font-size: 10px;
-  color: #94a3b8;
-  font-weight: 500;
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  outline: none;
+}
+
+.a11y-credit:hover {
+  color: var(--a11y-primary, #0056b3);
+  background: #e2e8f0;
+}
+
+.a11y-credit:focus-visible {
+  outline: 2px solid var(--a11y-primary, #0056b3);
+  outline-offset: 1px;
+}
+
+.a11y-credit svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0.75;
+  display: block;
+  flex-shrink: 0;
+}
+
+.a11y-credit:hover svg {
+  opacity: 1;
 }
 
 /* Small screen adjustments */

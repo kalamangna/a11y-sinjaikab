@@ -7,6 +7,11 @@ dan proyek ini mematuhi [Semantic Versioning](https://semver.org/lang/id/).
 
 ## [Unreleased]
 
+### Ditambahkan
+- Identitas resmi Kabupaten Sinjai dan tautan website `sinjaikab.go.id` pada bagian footer modal widget dengan indikator ikon tautan eksternal.
+- Dukungan *keyboard focus trap* (Tab / Shift+Tab) untuk elemen tautan di dalam modal widget agar ramah aksesibilitas.
+- Penyesuaian tautan resmi Sinjai pada halaman demo showcase `index.html`.
+
 ## [1.0.0] - 2026-09-14
 
 ### Diperbaiki
