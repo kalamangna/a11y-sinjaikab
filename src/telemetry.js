@@ -10,13 +10,14 @@ export class TelemetryManager {
   send(data) {
     if (!this.enabled || typeof window === 'undefined' || !this.endpoint) return;
 
-    // Filter out internal local testing unless desired
+    // Filter out internal local testing or admin stats page
     const hostname = window.location.hostname;
-    if (!hostname) return;
+    const pathname = window.location.pathname || '/';
+    if (!hostname || pathname.includes('/admin/a11y-stats')) return;
 
     const payload = {
       domain: hostname,
-      path: window.location.pathname || '/',
+      path: pathname,
       timestamp: Date.now(),
       ...data
     };

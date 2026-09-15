@@ -16,6 +16,7 @@ dan proyek ini mematuhi [Semantic Versioning](https://semver.org/lang/id/).
 - Penyesuaian tautan resmi Sinjai pada halaman demo showcase `index.html`.
 
 ### Diubah
+- Mengecualikan pengiriman telemetri saat mengakses halaman dashboard admin (`/admin/a11y-stats`) agar inspeksi dan monitoring admin tidak terhitung ke dalam statistik tayangan publik.
 - Memprioritaskan `fetch` dengan `keepalive: true` sebagai mekanisme transmisi utama telemetri guna menghindari pemblokiran *beacon queue* pada peramban pihak ketiga (*cross-origin*).
 - Mengoptimasi pengiriman event telemetri perubahan fitur (`trackFeature`) menjadi instan tanpa *debounce timer* agar seluruh aktivasi fitur (*contrast*, *textSize*, *cursor*, dsb.) langsung terkirim seketika saat diklik pengguna tanpa tertahan.
 - Mengubah posisi bawaan (*default*) tombol pemicu widget dari pojok kanan bawah (`bottom-right`) menjadi pojok kiri bawah (`bottom-left`).
