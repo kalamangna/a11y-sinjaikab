@@ -6,7 +6,7 @@ export const translations = {
     activeCount: '{count} aktif',
     readingGuideHint: 'Gerakkan kursor untuk memandu bacaan',
     sinjaikabWeb: 'sinjaikab.go.id',
-    sinjaikabWebTitle: 'Kunjungi Website Resmi Kabupaten Sinjai (sinjaikab.go.id)',
+    sinjaikabWebTitle: 'Portal Resmi Sinjai',
     features: {
       textSize: {
         title: 'Ukuran Teks',
@@ -65,7 +65,7 @@ export const translations = {
     activeCount: '{count} active',
     readingGuideHint: 'Move cursor to guide reading',
     sinjaikabWeb: 'sinjaikab.go.id',
-    sinjaikabWebTitle: 'Visit Sinjai Regency Official Website (sinjaikab.go.id)',
+    sinjaikabWebTitle: 'Official Sinjai Portal',
     features: {
       textSize: {
         title: 'Text Size',

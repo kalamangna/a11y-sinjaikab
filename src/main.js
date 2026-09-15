@@ -9,9 +9,10 @@ import { AccessibilityWidgetElement } from './widget-component.js';
     // Check if script tag has custom configs
     const currentScript = document.currentScript || document.querySelector('script[src*="widget"]');
     const options = {
-      position: currentScript?.getAttribute('data-position') || 'bottom-right',
+      position: currentScript?.getAttribute('data-position') || 'bottom-left',
       primaryColor: currentScript?.getAttribute('data-color') || '#0056b3',
-      lang: currentScript?.getAttribute('data-lang') || null
+      lang: currentScript?.getAttribute('data-lang') || null,
+      logo: currentScript?.getAttribute('data-logo') || null
     };
 
     const stateManager = new StateManager();

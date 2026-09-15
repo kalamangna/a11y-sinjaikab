@@ -346,7 +346,7 @@
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   padding: 4px 6px;
   border-radius: 6px;
   transition: all 0.15s ease;
@@ -361,6 +361,15 @@
 .a11y-credit:focus-visible {
   outline: 2px solid var(--a11y-primary, #0056b3);
   outline-offset: 1px;
+}
+
+.a11y-credit-logo {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  border-radius: 2px;
 }
 
 .a11y-credit svg {

@@ -8,9 +8,15 @@ dan proyek ini mematuhi [Semantic Versioning](https://semver.org/lang/id/).
 ## [Unreleased]
 
 ### Ditambahkan
+- Lambang resmi Kabupaten Sinjai (`sinjai.webp`) pada elemen tautan footer modal widget berdampingan dengan teks `sinjaikab.go.id`.
+- Dukungan atribut kustom `data-logo` untuk fleksibilitas penyesuaian aset logo.
 - Identitas resmi Kabupaten Sinjai dan tautan website `sinjaikab.go.id` pada bagian footer modal widget dengan indikator ikon tautan eksternal.
 - Dukungan *keyboard focus trap* (Tab / Shift+Tab) untuk elemen tautan di dalam modal widget agar ramah aksesibilitas.
 - Penyesuaian tautan resmi Sinjai pada halaman demo showcase `index.html`.
+
+### Diubah
+- Mengubah posisi bawaan (*default*) tombol pemicu widget dari pojok kanan bawah (`bottom-right`) menjadi pojok kiri bawah (`bottom-left`).
+- Memperpendek teks tooltip peramban (`title` dan `aria-label`) pada tautan footer menjadi "Portal Resmi Sinjai" agar lebih ringkas dan nyaman dibaca.
 
 ## [1.0.0] - 2026-09-14
 

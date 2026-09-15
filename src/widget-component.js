@@ -10,16 +10,18 @@ export class AccessibilityWidgetElement extends HTMLElement {
     this.stateManager = null;
     this.domEffects = null;
     this.currentLang = 'id';
-    this.position = 'bottom-right';
+    this.position = 'bottom-left';
     this.primaryColor = '#0056b3';
+    this.logoUrl = 'https://sinjaikab.go.id/sinjai.webp';
   }
 
   init(stateManager, domEffects, options = {}) {
     this.stateManager = stateManager;
     this.domEffects = domEffects;
-    this.position = options.position || this.getAttribute('data-position') || 'bottom-right';
+    this.position = options.position || this.getAttribute('data-position') || 'bottom-left';
     this.primaryColor = options.primaryColor || this.getAttribute('data-color') || '#0056b3';
     this.currentLang = detectLanguage(options.lang || this.getAttribute('data-lang'));
+    this.logoUrl = options.logo || this.getAttribute('data-logo') || 'https://sinjaikab.go.id/sinjai.webp';
 
     this.render();
     this.bindEvents();
@@ -151,6 +153,15 @@ export class AccessibilityWidgetElement extends HTMLElement {
             title="${this.t.sinjaikabWebTitle}"
             aria-label="${this.t.sinjaikabWebTitle}"
           >
+            <img 
+              src="${this.logoUrl}" 
+              alt="Logo Sinjai" 
+              class="a11y-credit-logo" 
+              width="16" 
+              height="16" 
+              loading="lazy" 
+              decoding="async"
+            />
             <span>${this.t.sinjaikabWeb}</span>
             ${ICONS.externalLink}
           </a>

@@ -30,7 +30,7 @@ Unduh berkas `dist/widget.min.js`, lalu panggil dari direktori aset website Anda
 
 | Atribut | Pilihan Nilai | Default | Keterangan |
 | :--- | :--- | :--- | :--- |
-| `data-position` | `bottom-right`, `bottom-left`, `top-right`, `top-left` | `bottom-right` | Posisi tombol pemicu |
+| `data-position` | `bottom-left`, `bottom-right`, `top-right`, `top-left` | `bottom-left` | Posisi tombol pemicu |
 | `data-lang` | `id`, `en` | `id` | Bahasa antarmuka modal |
 | `data-color` | Kode HEX (misal: `#0056b3`) | `#0056b3` | Warna aksen utama tombol |
 
