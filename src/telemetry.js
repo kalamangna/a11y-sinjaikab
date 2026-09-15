@@ -24,21 +24,21 @@ export class TelemetryManager {
     const jsonStr = JSON.stringify(payload);
 
     try {
-      if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
-        const blob = new Blob([jsonStr], { type: 'text/plain' });
-        const queued = navigator.sendBeacon(this.endpoint, blob);
-        if (queued) return;
+      if (typeof fetch !== 'undefined') {
+        fetch(this.endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain' },
+          body: jsonStr,
+          keepalive: true,
+          mode: 'cors'
+        }).catch(() => {});
+        return;
       }
 
-      fetch(this.endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain' },
-        body: jsonStr,
-        keepalive: true,
-        mode: 'cors'
-      }).catch(() => {
-        // Silently catch to never interrupt host website
-      });
+      if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+        const blob = new Blob([jsonStr], { type: 'text/plain' });
+        navigator.sendBeacon(this.endpoint, blob);
+      }
     } catch {
       // Silently catch any transmission errors
     }
