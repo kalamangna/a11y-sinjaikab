@@ -25,14 +25,14 @@ export class TelemetryManager {
 
     try {
       if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
-        const blob = new Blob([jsonStr], { type: 'application/json' });
+        const blob = new Blob([jsonStr], { type: 'text/plain' });
         const queued = navigator.sendBeacon(this.endpoint, blob);
         if (queued) return;
       }
 
       fetch(this.endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain' },
         body: jsonStr,
         keepalive: true,
         mode: 'cors'
