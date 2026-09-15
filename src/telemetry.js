@@ -10,10 +10,18 @@ export class TelemetryManager {
   send(data) {
     if (!this.enabled || typeof window === 'undefined' || !this.endpoint) return;
 
-    // Filter out internal local testing or admin stats page
-    const hostname = window.location.hostname;
-    const pathname = window.location.pathname || '/';
-    if (!hostname || pathname.includes('/admin/a11y-stats')) return;
+    // Filter out internal local testing, vercel preview, or admin stats page
+    const hostname = (window.location.hostname || '').toLowerCase();
+    const pathname = (window.location.pathname || '/').toLowerCase();
+    if (
+      !hostname ||
+      hostname.includes('.vercel.app') ||
+      hostname.includes('localhost') ||
+      hostname === '127.0.0.1' ||
+      pathname.includes('/admin/a11y-stats')
+    ) {
+      return;
+    }
 
     const payload = {
       domain: hostname,
