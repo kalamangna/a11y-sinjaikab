@@ -16,6 +16,7 @@ dan proyek ini mematuhi [Semantic Versioning](https://semver.org/lang/id/).
 - Penyesuaian tautan resmi Sinjai pada halaman demo showcase `index.html`.
 
 ### Diubah
+- Mengoptimasi pengiriman event telemetri perubahan fitur (`trackFeature`) menjadi instan tanpa *debounce timer* agar seluruh aktivasi fitur (*contrast*, *textSize*, *cursor*, dsb.) langsung terkirim seketika saat diklik pengguna tanpa tertahan.
 - Mengubah posisi bawaan (*default*) tombol pemicu widget dari pojok kanan bawah (`bottom-right`) menjadi pojok kiri bawah (`bottom-left`).
 - Memperpendek teks tooltip peramban (`title` dan `aria-label`) pada tautan footer menjadi "Portal Resmi Sinjai" agar lebih ringkas dan nyaman dibaca.
 - Memperbarui dokumentasi `README.md` dan demo `index.html` dengan konfigurasi `bottom-left` serta atribut `data-logo`.

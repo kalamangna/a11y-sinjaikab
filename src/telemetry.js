@@ -53,14 +53,11 @@ export class TelemetryManager {
   }
 
   trackFeature(featureName, featureValue) {
-    clearTimeout(this._debounceTimer);
-    this._debounceTimer = setTimeout(() => {
-      this.send({
-        type: 'feature_toggle',
-        feature: featureName,
-        value: String(featureValue)
-      });
-    }, 400);
+    this.send({
+      type: 'feature_toggle',
+      feature: featureName,
+      value: String(featureValue)
+    });
   }
 
   trackReset() {
