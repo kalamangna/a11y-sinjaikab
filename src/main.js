@@ -12,7 +12,9 @@ import { AccessibilityWidgetElement } from './widget-component.js';
       position: currentScript?.getAttribute('data-position') || 'bottom-left',
       primaryColor: currentScript?.getAttribute('data-color') || '#0056b3',
       lang: currentScript?.getAttribute('data-lang') || null,
-      logo: currentScript?.getAttribute('data-logo') || null
+      logo: currentScript?.getAttribute('data-logo') || null,
+      telemetry: currentScript?.getAttribute('data-telemetry') !== 'false',
+      telemetryEndpoint: currentScript?.getAttribute('data-telemetry-endpoint') || null
     };
 
     const stateManager = new StateManager();

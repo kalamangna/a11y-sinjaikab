@@ -1,6 +1,7 @@
 import uiStyles from './ui-styles.css?inline';
 import { ICONS } from './icons.js';
 import { translations, detectLanguage } from './i18n.js';
+import { TelemetryManager } from './telemetry.js';
 
 export class AccessibilityWidgetElement extends HTMLElement {
   constructor() {
@@ -9,6 +10,7 @@ export class AccessibilityWidgetElement extends HTMLElement {
     this.isOpen = false;
     this.stateManager = null;
     this.domEffects = null;
+    this.telemetry = null;
     this.currentLang = 'id';
     this.position = 'bottom-left';
     this.primaryColor = '#0056b3';
@@ -18,6 +20,7 @@ export class AccessibilityWidgetElement extends HTMLElement {
   init(stateManager, domEffects, options = {}) {
     this.stateManager = stateManager;
     this.domEffects = domEffects;
+    this.telemetry = new TelemetryManager(options);
     this.position = options.position || this.getAttribute('data-position') || 'bottom-left';
     this.primaryColor = options.primaryColor || this.getAttribute('data-color') || '#0056b3';
     this.currentLang = detectLanguage(options.lang || this.getAttribute('data-lang'));
@@ -25,6 +28,9 @@ export class AccessibilityWidgetElement extends HTMLElement {
 
     this.render();
     this.bindEvents();
+
+    // Track initial pageview
+    this.telemetry.trackPageView();
 
     // Subscribe to state changes
     this.stateManager.subscribe((state) => {
@@ -194,6 +200,7 @@ export class AccessibilityWidgetElement extends HTMLElement {
     // Reset All
     resetBtn.addEventListener('click', () => {
       this.stateManager.reset();
+      this.telemetry?.trackReset();
     });
 
     // Feature Toggles
@@ -201,6 +208,7 @@ export class AccessibilityWidgetElement extends HTMLElement {
     shadow.getElementById('btn-text-size').addEventListener('click', () => {
       const next = (this.stateManager.get('textSize') + 1) % 4;
       this.stateManager.set('textSize', next);
+      this.telemetry?.trackFeature('textSize', next);
     });
 
     // 2. Contrast
@@ -208,23 +216,30 @@ export class AccessibilityWidgetElement extends HTMLElement {
     shadow.getElementById('btn-contrast').addEventListener('click', () => {
       const current = this.stateManager.get('contrast');
       const nextIdx = (contrastModes.indexOf(current) + 1) % contrastModes.length;
-      this.stateManager.set('contrast', contrastModes[nextIdx]);
+      const nextMode = contrastModes[nextIdx];
+      this.stateManager.set('contrast', nextMode);
+      this.telemetry?.trackFeature('contrast', nextMode);
     });
 
     // 3. Dyslexia Font
     shadow.getElementById('btn-dyslexia').addEventListener('click', () => {
-      this.stateManager.set('dyslexiaFont', !this.stateManager.get('dyslexiaFont'));
+      const next = !this.stateManager.get('dyslexiaFont');
+      this.stateManager.set('dyslexiaFont', next);
+      this.telemetry?.trackFeature('dyslexiaFont', next);
     });
 
     // 4. Text Spacing (0 -> 1 -> 2 -> 0)
     shadow.getElementById('btn-spacing').addEventListener('click', () => {
       const next = (this.stateManager.get('textSpacing') + 1) % 3;
       this.stateManager.set('textSpacing', next);
+      this.telemetry?.trackFeature('textSpacing', next);
     });
 
     // 5. Highlight Links
     shadow.getElementById('btn-links').addEventListener('click', () => {
-      this.stateManager.set('highlightLinks', !this.stateManager.get('highlightLinks'));
+      const next = !this.stateManager.get('highlightLinks');
+      this.stateManager.set('highlightLinks', next);
+      this.telemetry?.trackFeature('highlightLinks', next);
     });
 
     // 6. Cursor (normal -> big -> readingGuide -> normal)
@@ -232,12 +247,16 @@ export class AccessibilityWidgetElement extends HTMLElement {
     shadow.getElementById('btn-cursor').addEventListener('click', () => {
       const current = this.stateManager.get('cursor');
       const nextIdx = (cursorModes.indexOf(current) + 1) % cursorModes.length;
-      this.stateManager.set('cursor', cursorModes[nextIdx]);
+      const nextMode = cursorModes[nextIdx];
+      this.stateManager.set('cursor', nextMode);
+      this.telemetry?.trackFeature('cursor', nextMode);
     });
 
     // 7. Pause Animations
     shadow.getElementById('btn-pause').addEventListener('click', () => {
-      this.stateManager.set('pauseAnimations', !this.stateManager.get('pauseAnimations'));
+      const next = !this.stateManager.get('pauseAnimations');
+      this.stateManager.set('pauseAnimations', next);
+      this.telemetry?.trackFeature('pauseAnimations', next);
     });
 
     // ESC to close and Tab focus trap
@@ -284,6 +303,7 @@ export class AccessibilityWidgetElement extends HTMLElement {
 
   openModal() {
     this.isOpen = true;
+    this.telemetry?.trackModalOpen();
     const shadow = this.shadowRoot;
     const modal = shadow.getElementById('modal');
     modal.classList.add('open');

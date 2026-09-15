@@ -11,6 +11,7 @@ dan proyek ini mematuhi [Semantic Versioning](https://semver.org/lang/id/).
 - Lambang resmi Kabupaten Sinjai (`sinjai.webp`) pada elemen tautan footer modal widget berdampingan dengan teks `sinjaikab.go.id`.
 - Dukungan atribut kustom `data-logo` untuk fleksibilitas penyesuaian aset logo.
 - Identitas resmi Kabupaten Sinjai dan tautan website `sinjaikab.go.id` pada bagian footer modal widget dengan indikator ikon tautan eksternal.
+- Sistem telemetri dan statistik pemakaian widget non-blocking menggunakan `navigator.sendBeacon` / `fetch keepalive` (*Zero-PII*) dengan dukungan atribut `data-telemetry` dan `data-telemetry-endpoint`.
 - Dukungan *keyboard focus trap* (Tab / Shift+Tab) untuk elemen tautan di dalam modal widget agar ramah aksesibilitas.
 - Penyesuaian tautan resmi Sinjai pada halaman demo showcase `index.html`.
 

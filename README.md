@@ -39,6 +39,8 @@ Semua opsi dapat dikonfigurasi langsung melalui atribut HTML pada tag `<script>`
 | `data-lang` | `id`, `en` | `id` | Bahasa antarmuka modal aksesibilitas |
 | `data-color` | Kode HEX (misal: `#0056b3`) | `#0056b3` | Warna aksen utama tombol dan status aktif |
 | `data-logo` | URL Gambar / Path | `https://sinjaikab.go.id/sinjai.webp` | URL lambang daerah Sinjai pada tautan footer |
+| `data-telemetry` | `true`, `false` | `true` | Pengiriman data analitik pemakaian ke server (*Zero-PII*) |
+| `data-telemetry-endpoint` | URL Endpoint | `https://sinjaikab.go.id/api/a11y/telemetry` | URL tujuan penerima telemetri kustom |
 
 ---
 
@@ -54,6 +56,7 @@ Semua opsi dapat dikonfigurasi langsung melalui atribut HTML pada tag `<script>`
 - 🎯 **Panduan Baca**: Pembesar kursor mouse (*Big Cursor*) dan garis panduan baca horizontal (*Reading Guide*).
 - ⏸️ **Hentikan Animasi**: Menghentikan pergerakan kedipan dan animasi CSS secara seketika.
 - 🌐 **Dwibahasa (i18n)**: Mendukung Bahasa Indonesia (ID) dan Bahasa Inggris (EN) dengan pendeteksian otomatis dari atribut `lang` dokumen.
+- 📊 **Statistik & Telemetri Ringan**: Pelacakan domain pengguna dan preferensi aksesibilitas non-blocking via `navigator.sendBeacon` yang ramah privasi (*Zero-PII*, tanpa IP/cookie).
 - 💾 **Penyimpanan Preferensi**: Preferensi pengguna tersimpan otomatis di `localStorage` per domain.
 
 ---
