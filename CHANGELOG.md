@@ -17,6 +17,7 @@ dan proyek ini mematuhi [Semantic Versioning](https://semver.org/lang/id/).
 ### Diubah
 - Mengubah posisi bawaan (*default*) tombol pemicu widget dari pojok kanan bawah (`bottom-right`) menjadi pojok kiri bawah (`bottom-left`).
 - Memperpendek teks tooltip peramban (`title` dan `aria-label`) pada tautan footer menjadi "Portal Resmi Sinjai" agar lebih ringkas dan nyaman dibaca.
+- Memperbarui dokumentasi `README.md` dan demo `index.html` dengan konfigurasi `bottom-left` serta atribut `data-logo`.
 
 ## [1.0.0] - 2026-09-14
 
